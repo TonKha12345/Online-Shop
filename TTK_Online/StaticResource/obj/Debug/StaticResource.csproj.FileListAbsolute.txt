@@ -1,0 +1,11 @@
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\bin\Debug\StaticResource.dll
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\bin\Debug\StaticResource.pdb
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\bin\Debug\en\StaticResource.resources.dll
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\obj\Debug\StaticResource.csproj.AssemblyReference.cache
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\obj\Debug\StaticResource.Resource.resources
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\obj\Debug\StaticResource.Resource.en.resources
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\obj\Debug\StaticResource.csproj.GenerateResource.cache
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\obj\Debug\StaticResource.csproj.CoreCompileInputs.cache
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\obj\Debug\en\StaticResource.resources.dll
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\obj\Debug\StaticResource.dll
+D:\Kteam\TTK_Online\TTK_Online\StaticResource\obj\Debug\StaticResource.pdb

@@ -1,0 +1,58 @@
+﻿@model Models.EF.OrderDetail
+
+@{
+    ViewBag.Title = "PaymentNotUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("PaymentNotUser", "Cart", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal mt-3">
+        <h1>THÔNG TIN NGƯỜI NHẬN</h1>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.ShipName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShipName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShipName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.ShipPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShipPhone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShipPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.ShipAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShipAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShipAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.ShipEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShipEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShipEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đặt hàng" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+

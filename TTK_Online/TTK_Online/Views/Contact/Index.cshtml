@@ -1,0 +1,59 @@
+﻿@model Models.EF.Contact
+
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-xl-6">
+            <h1>THÔNG TIN LIÊN HỆ</h1>
+            <hr />
+            <br />
+            @Html.Raw(Model.Content)
+            <br />
+            <hr />
+            <h3>GỬI THÔNG TIN</h3>
+
+            @using (Html.BeginForm("Feedback", "Contact", FormMethod.Post))
+            {
+                <div class="mb-3 mt-3">
+                    <label class="form-label">Họ và tên</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your Name" name="name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your Address" name="address" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your Phone" name="phone" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your Email" name="email" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Lời nhắn</label>
+                    <input class="form-control" id="formGroupExampleInput" placeholder="Enter your Messages" name="content" />
+                </div>
+
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Gửi" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="col-xl-6">
+            <h1>BẢN ĐỒ</h1>
+            <div class="map mt-3" id="mapCanvas">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.071806736254!2d106.69662227511776!3d10.805812358650801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528c0aded9fad%3A0x3d8f2f42abfd4de8!2zMjYgTmd1eeG7hW4gVGhp4buHbiBUaHXhuq10LCBQaMaw4budbmcgMjQsIELDrG5oIFRo4bqhbmgsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCA3MjMwNywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1689825426027!5m2!1svi!2s"
+                        width="740" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header_slide
+    {
+    <div class="header_slide">
+        <div class="header_bottom_left">
+            @{
+                Html.RenderAction("ProductCategory", "ProductCategory");
+            }
+        </div>
+        <div class="header_bottom_right">
+            @{
+                Html.RenderAction("Slide", "Slide");
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+}
+
+<div class="content">
+    @{
+        Html.RenderAction("NewProduct", "Home");
+    }
+
+    @{
+        Html.RenderAction("FeatureProduct", "Home");
+    }
+</div>
+

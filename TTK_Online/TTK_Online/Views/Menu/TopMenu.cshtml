@@ -1,0 +1,23 @@
+﻿@model List<Models.EF.Menu>
+@if (Models.Common.SessionHelper.UserSession != null)
+{
+    <div class="account_desc">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li><a href="@item.Link">@item.Name</a></li>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    <div class="account_desc">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li><a href="@item.Link">@item.Name</a></li>
+            }
+        </ul>
+    </div>
+}

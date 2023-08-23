@@ -1,0 +1,103 @@
+﻿@model Models.Model.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="/Assets/Client/js/Controller/UserController.js"></script>
+}
+<div class="container-fluid mt-3">
+    @using (Html.BeginForm("Register", "Register", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="heading">
+                <h1>ĐĂNG KÍ THÀNH VIÊN</h1>
+            </div>
+            <div class="clear"></div>
+            <hr />
+            <div class="form-group">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.UserName, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @id = "formGroupExampleInput", @placeholder = "Enter UserName" })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Password, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", @id = "formGroupExampleInput", @placeholder = "Enter password" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.ConfirmPassword, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", @id = "formGroupExampleInput", @placeholder = "Enter password" })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Name, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @id = "formGroupExampleInput", @placeholder = "Enter your Name" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Email, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "formGroupExampleInput", @placeholder = "Enter your Email" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Phone, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @id = "formGroupExampleInput", @placeholder = "Enter your phone number" })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Address, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @id = "formGroupExampleInput", @placeholder = "Enter your address" })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.ProvinceID, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.DropDownList("ProvinceID", new SelectList(new string[] { }), new { @class = "form-control", @id = "ddlProvince" })
+                    @Html.ValidationMessageFor(model => model.ProvinceID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.DistrictID, new { @class = "form-label" })
+                <div class="col-md-6">
+                    @Html.DropDownList("DistrictID", new SelectList(new string[] { }), new { @class = "form-control", @id = "ddlDistrict" })
+                    @Html.ValidationMessageFor(model => model.DistrictID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Đăng ký" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

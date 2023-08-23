@@ -1,0 +1,38 @@
+﻿@model Models.EF.Content
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content_top mt-3">
+    <div class="heading">
+        <h3>@Model.Name</h3>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="image group">
+    <div class="grid images_3_of_1">
+        <img src="@Model.Images" alt="@Model.Name" />
+    </div>
+    <div class="grid news_desc">
+        <h3>@Model.Name </h3>
+        <h4>Posted on @Model.CreateDate by <span><a href="#">@Model.CreateBy</a></span></h4>
+        @Html.Raw(Model.Detail)
+    </div>
+    <div class="clear"></div>
+    <br />
+    <div class="form-group">
+        Tags: 
+        <ul>
+            @{
+                var list = (List<Models.EF.Tag>)ViewBag.Tags;
+                foreach (var item in list)
+                {
+                    <li><a href="/tag/@item.ID">@item.Name</a></li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@model List<Models.EF.Product>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var productCategory = (Models.EF.ProductCategory)ViewBag.Name;
+}
+
+<div class="content_top">
+    <div class="heading">
+        <h3>@productCategory.Name</h3>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="section group">
+    @if (Model.Count() > 0)
+    {
+        foreach (var item in Model)
+        {
+            var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="@url"><img src="@item.Images" alt="@item.Name" /></a>
+                <h2>@item.Name</h2>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ") VNĐ</span></p>
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="/them-gio-hang?productID=@item.ID&quantity=1">Thêm vào giỏ</a></h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h4>Không có sản phẩm nào</h4>
+    }
+
+    <div class="clear"></div>
+    @if (ViewBag.TotalPage > 1)
+    {
+        var pageDisplay = ViewBag.MaxPage;
+        var totalPage = ViewBag.TotalPage;
+        int currentPage = ViewBag.Page;
+
+        //Create link
+        var startPage = Math.Max(1, currentPage - pageDisplay / 2);
+        var endPage = Math.Min(totalPage, currentPage + pageDisplay / 2);
+        var link = "/san-pham/" + productCategory.MetaTitle + "-" + productCategory.ID;
+
+        <div class="content-pagenation">
+            <ul>
+                @if (currentPage > 1)
+                {
+                    <li>
+                        <a href="@link?page=@ViewBag.Previous">Previous</a>
+                    </li>
+                }
+
+                @for (int i = startPage; i <= endPage; i++)
+                {
+                    if (currentPage == i)
+                    {
+                        <li class="active">
+                            <a href="@link?page=@i">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@link?page=@i">@i</a>
+                        </li>
+                    }
+                }
+                @if (currentPage < totalPage)
+                {
+                    <li>
+                        <a href="@link?page=@ViewBag.Next">Next</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+    }
+
+</div>
+

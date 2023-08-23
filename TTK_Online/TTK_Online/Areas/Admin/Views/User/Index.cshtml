@@ -1,0 +1,117 @@
+﻿@model List<Models.EF.User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="/Assets/Admin/js/Controller/UserController.js"></script>
+}
+
+@section header{
+    Quản lí người dùng}
+<div class="panel"></div>
+@using (Html.BeginForm("Index", "User", FormMethod.Get))
+{
+    <div class="row form-group">
+        <div>
+            <input class="form-control" name="search" value="@ViewBag.Search" type="text" />
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            <a class="btn btn-primary" href="/Admin/User/Create">Thêm mới</a>
+        </div>
+    </div>
+}
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Quản lí người dùng</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.UserName</td>
+                            <td>@item.Name</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
+                            <td>@item.Address</td>
+                            <td>
+                                <a href="#" class="btn-active" data-id="@item.ID">@Html.Raw(item.Status ? "Kích hoạt" : "Khóa")</a>
+                            </td>
+                            <td>
+                                <a href="/Admin/User/Edit/@item.ID ">Sửa</a> |
+                                <a href="/Admin/User/Delete/@item.ID">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            @if (ViewBag.TotalPage > 1)
+            {
+                var pageDisplay = ViewBag.MaxPage;
+                var totalPage = ViewBag.TotalPage;
+                int currentPage = ViewBag.Page;
+
+                //Create link
+                var startPage = Math.Max(1, currentPage - pageDisplay / 2);
+                var endPage = Math.Min(totalPage, currentPage + pageDisplay / 2);
+                var link = "/Admin/User/Index?search=" + ViewBag.Search;
+
+                <div class="col-sm-12 col-md-7">
+                    <div class="dataTables_paginate paging_simple_number">
+                        <ul class="pagination">
+                            @if (currentPage > 1)
+                            {
+                                <li class="paginate_button page-item previous disabled">
+                                    <a href="@link&page=@ViewBag.Previous" class="page-link">Previous</a>
+                                </li>
+                            }
+
+                            @for (int i = startPage; i <= endPage; i++)
+                            {
+                                if (currentPage == i)
+                                {
+                                    <li class="paginate_button page-item active">
+                                        <a href="@link&page=@i" class="page-link">@i</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="paginate_button page-item">
+                                        <a href="@link&page=@i" class="page-link">@i</a>
+                                    </li>
+                                }
+                            }
+                            @if (currentPage < totalPage)
+                            {
+                                <li class="paginate_button page-item next">
+                                    <a href="@link&page=@ViewBag.Next" class="page-link">Next</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
